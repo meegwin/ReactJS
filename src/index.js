@@ -5,9 +5,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
+  //noi dung in ra html
   <React.StrictMode>
     <App />
   </React.StrictMode>,
+  //vi tri in ra html
   document.getElementById('root')
 );
 
