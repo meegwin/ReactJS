@@ -1,10 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import StateLessComponets from './Components/StateLessComponents';
+import StateFull, {StateFullComponents} from './Components/StateFullComponents';
 function App() {
   return (
-      <div>My App</div>
+      <div>
+        <StateLessComponets/>
+        <StateFull/>
+      </div>
   );
 }
 
