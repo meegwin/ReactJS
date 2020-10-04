@@ -1,11 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+// import StateLessComponets from './Components/StateLessComponents';
+// import StateFull, {StateFullComponents} from './Components/StateFullComponents';
+import Home from './btComponents/Home';
 function App() {
   return (
-      <div>My App</div>
+      <div>
+        <Home/>
+        {/* <StateLessComponets/>
+        <StateFull/> */}
+      </div>
   );
 }
-
 export default App;
