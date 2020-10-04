@@ -12,8 +12,67 @@
  */
 
 import React, { Component } from "react";
+import SanPham from "./SanPham";
 
 export default class BaiTapGioHang extends Component {
+  danhSachSanPham = [
+    {
+      maSanPham: "1",
+      tenSanPham: "VinSmart Live",
+      hinhAnh: "./images/img/vsphone.jpg",
+      manHinh: `AMOLED, 6.2", Full HD+
+        `,
+      heDieuHanh: "Android 9.0 (Pie)",
+      cameraTruoc: "20 MP",
+      cameraSau: `Chính 48 MP &amp; Phụ 8 MP, 5 MP`,
+      ram: "4 GB",
+      rom: "6 GB",
+    },
+    {
+      maSanPham: "2",
+      tenSanPham: "Meizu 16Xs",
+      hinhAnh: "./images/img/vsphone.jpg",
+      manHinh: `	AMOLED, FHD+ 2232 x 1080 pixels`,
+      heDieuHanh: "Android 9.0 (Pie)",
+      cameraTruoc: "20 MP",
+      cameraSau: `Chính 48 MP &amp; Phụ 8 MP, 5 MP`,
+      ram: "4 GB",
+      rom: "6 GB",
+    },
+    {
+      maSanPham: "3",
+      tenSanPham: "Iphone XS Max",
+      hinhAnh: "./images/img/vsphone.jpg",
+      manHinh: `OLED, 6.5", 1242 x 2688 Pixels`,
+      heDieuHanh: "Android 9.0 (Pie)",
+      cameraTruoc: "20 MP",
+      cameraSau: `Chính 48 MP &amp; Phụ 8 MP, 5 MP`,
+      ram: "4 GB",
+      rom: "6 GB",
+    },
+  ];
+
+  state = {
+    sanPhamChiTiet: {
+      maSanPham: "1",
+      hinhAnh: "./images/img/vsphone.jpg",
+      manHinh: `OLED, 6.5", 1242 x 2688 Pixels`,
+      heDieuHanh: "Android 9.0 (Pie)",
+      cameraTruoc: "20 MP",
+      cameraSau: `Chính 48 MP &amp; Phụ 8 MP, 5 MP`,
+      ram: "4 GB",
+      rom: "6 GB",
+    },
+  };
+  renderDanhSachSanPham = () => {
+    return this.danhSachSanPham.map((product, index) => {
+      return (
+        <div className="col-sm-4">
+            <SanPham/>
+        </div>
+      );
+    });
+  };
   render() {
     return (
       <div>
@@ -31,44 +90,7 @@ export default class BaiTapGioHang extends Component {
             </div>
             <div className="container">
               <div className="row">
-                <div className="col-sm-4">
-                  <div className="card">
-                    <img className="card-img-top" src="./images/img/vsphone.jpg" alt />
-                    <div className="card-body">
-                      <h4 className="card-title">VinSmart Live</h4>
-                      <button className="btn btn-success">Chi tiết</button>
-                      <button className="btn btn-danger">Thêm giỏ hàng</button>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-sm-4">
-                  <div className="card">
-                    <img
-                      className="card-img-top"
-                      src="./images/img/meizuphone.jpg"
-                      alt
-                    />
-                    <div className="card-body">
-                      <h4 className="card-title">Meizu 16Xs</h4>
-                      <button className="btn btn-success">Chi tiết</button>
-                      <button className="btn btn-danger">Thêm giỏ hàng</button>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-sm-4">
-                  <div className="card">
-                    <img
-                      className="card-img-top"
-                      src="./images/img/applephone.jpg"
-                      alt
-                    />
-                    <div className="card-body">
-                      <h4 className="card-title">Iphone XS Max</h4>
-                      <button className="btn btn-success">Chi tiết</button>
-                      <button className="btn btn-danger">Thêm giỏ hàng</button>
-                    </div>
-                  </div>
-                </div>
+                {this.renderDanhSachSanPham}
               </div>
             </div>
             <div
@@ -128,7 +150,11 @@ export default class BaiTapGioHang extends Component {
             </div>
             <div className="row">
               <div className="col-sm-5">
-                <img className="img-fluid" src="./images/img/applephone.jpg" alt />
+                <img
+                  className="img-fluid"
+                  src={this.state.sanPhamChiTiet.hinhAnh}
+                  alt
+                />
               </div>
               <div className="col-sm-7">
                 <h3>Thông số kỹ thuật</h3>
@@ -136,27 +162,27 @@ export default class BaiTapGioHang extends Component {
                   <tbody>
                     <tr>
                       <td>Màn hình</td>
-                      <td>OLED, 6.5", 1242 x 2688 Pixels</td>
+                      <td>{this.state.sanPhamChiTiet.manHinh}</td>
                     </tr>
                     <tr>
                       <td>Hệ điều hành</td>
-                      <td>Android 9.0 (Pie)</td>
+                      <td>{this.state.sanPhamChiTiet.heDieuHanh}</td>
                     </tr>
                     <tr>
                       <td>Camera trước</td>
-                      <td>20 MP</td>
+                      <td>{this.state.sanPhamChiTiet.cameraTruoc}</td>
                     </tr>
                     <tr>
                       <td>Camera sau</td>
-                      <td>Chính 48 MP &amp; Phụ 8 MP, 5 MP</td>
+                      <td>{this.state.sanPhamChiTiet.cameraSau}</td>
                     </tr>
                     <tr>
                       <td>RAM</td>
-                      <td>4 GB</td>
+                      <td>{this.state.sanPhamChiTiet.ram}</td>
                     </tr>
                     <tr>
                       <td>ROM</td>
-                      <td>6 GB</td>
+                      <td>{this.state.sanPhamChiTiet.rom}</td>
                     </tr>
                   </tbody>
                 </table>
