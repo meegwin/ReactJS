@@ -6,10 +6,12 @@ import FunctionEvents from './HandleEvents/FunctionEvents';
 import ClassEvents from './HandleEvents/ClassEvents'
 import DemoConditionalAndState from './DemoLogin/DemoConditionalAndState';
 import BaiTapChonMauXe from './BaiTapChonMauXe/';
+import DemoCourse from './ListAndKeys/DemoCourse';
+import DemoProps from './Props/DemoProps';
 function App() {
   return (
       <div>My App
-        <BaiTapChonMauXe/>
+        <DemoProps/>
       </div>
   );
 }
