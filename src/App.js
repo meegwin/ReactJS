@@ -11,10 +11,11 @@ import DemoProps from "./Props/DemoProps";
 // import StateFull, {StateFullComponents} from './Components/StateFullComponents';
 import Home from "./btComponents/Home";
 import BaiTapGioHang from "./BaiTapGioHang/BaiTapGioHang";
+import BaiTapGioHangRedux from "./BaiTapGioHangRedux/BaiTapGioHang";
 function App() {
   return (
     <div>
-      <BaiTapGioHang/>
+      <BaiTapGioHangRedux />
     </div>
   );
 }

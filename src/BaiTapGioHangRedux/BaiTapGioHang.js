@@ -14,47 +14,49 @@
 import React, { Component } from "react";
 import Modal from "./Modal";
 import SanPham from "./SanPham";
+import { connect} from 'react-redux';
 
-export default class BaiTapGioHang extends Component {
-  danhSachSanPham = [
-    {
-      maSanPham: "1",
-      tenSanPham: "VinSmart Live",
-      hinhAnh: "./images/img/vsphone.jpg",
-      manHinh: `AMOLED, 6.2", Full HD+
-        `,
-      heDieuHanh: "Android 9.0 (Pie)",
-      cameraTruoc: "20 MP",
-      cameraSau: `Chính 48 MP &amp; Phụ 8 MP, 5 MP`,
-      ram: "4 GB",
-      rom: "6 GB",
-      price: "12000000",
-    },
-    {
-      maSanPham: "2",
-      tenSanPham: "Meizu 16Xs",
-      hinhAnh: "./images/img/meizuphone.jpg",
-      manHinh: `	AMOLED, FHD+ 2232 x 1080 pixels`,
-      heDieuHanh: "Android 9.0 (Pie)",
-      cameraTruoc: "20 MP",
-      cameraSau: `Chính 48 MP &amp; Phụ 8 MP, 5 MP`,
-      ram: "4 GB",
-      rom: "6 GB",
-      price: "7800000",
-    },
-    {
-      maSanPham: "3",
-      tenSanPham: "Iphone XS Max",
-      hinhAnh: "./images/img/applephone.jpg",
-      manHinh: `OLED, 6.5", 1242 x 2688 Pixels`,
-      heDieuHanh: "Android 9.0 (Pie)",
-      cameraTruoc: "20 MP",
-      cameraSau: `Chính 48 MP &amp; Phụ 8 MP, 5 MP`,
-      ram: "4 GB",
-      rom: "6 GB",
-      price: "20000000",
-    },
-  ];
+
+class BaiTapGioHang extends Component {
+  // danhSachSanPham = [
+  //   {
+  //     maSanPham: "1",
+  //     tenSanPham: "VinSmart Live",
+  //     hinhAnh: "./images/img/vsphone.jpg",
+  //     manHinh: `AMOLED, 6.2", Full HD+
+  //       `,
+  //     heDieuHanh: "Android 9.0 (Pie)",
+  //     cameraTruoc: "20 MP",
+  //     cameraSau: `Chính 48 MP &amp; Phụ 8 MP, 5 MP`,
+  //     ram: "4 GB",
+  //     rom: "6 GB",
+  //     price: "12000000",
+  //   },
+  //   {
+  //     maSanPham: "2",
+  //     tenSanPham: "Meizu 16Xs",
+  //     hinhAnh: "./images/img/meizuphone.jpg",
+  //     manHinh: `	AMOLED, FHD+ 2232 x 1080 pixels`,
+  //     heDieuHanh: "Android 9.0 (Pie)",
+  //     cameraTruoc: "20 MP",
+  //     cameraSau: `Chính 48 MP &amp; Phụ 8 MP, 5 MP`,
+  //     ram: "4 GB",
+  //     rom: "6 GB",
+  //     price: "7800000",
+  //   },
+  //   {
+  //     maSanPham: "3",
+  //     tenSanPham: "Iphone XS Max",
+  //     hinhAnh: "./images/img/applephone.jpg",
+  //     manHinh: `OLED, 6.5", 1242 x 2688 Pixels`,
+  //     heDieuHanh: "Android 9.0 (Pie)",
+  //     cameraTruoc: "20 MP",
+  //     cameraSau: `Chính 48 MP &amp; Phụ 8 MP, 5 MP`,
+  //     ram: "4 GB",
+  //     rom: "6 GB",
+  //     price: "20000000",
+  //   },
+  // ];
 
   state = {
     sanPhamChiTiet: {
@@ -139,12 +141,12 @@ export default class BaiTapGioHang extends Component {
   };
 
   renderDanhSachSanPham = () => {
-    return this.danhSachSanPham.map((product, index) => {
+    return this.props.danhSachSanPham.map((product, index) => {
       return (
         <div className="col-sm-4" key={index}>
           <SanPham
             SanPham={product}
-            handleDetail={this.handleDetail}
+            // handleDetail={this.handleDetail}
             handleAddSP={this.handleAddSP}
           />
         </div>
@@ -194,27 +196,27 @@ export default class BaiTapGioHang extends Component {
                   <tbody>
                     <tr>
                       <td>Màn hình</td>
-                      <td>{this.state.sanPhamChiTiet.manHinh}</td>
+                      <td>{this.props.sanPhamChiTiet.manHinh}</td>
                     </tr>
                     <tr>
                       <td>Hệ điều hành</td>
-                      <td>{this.state.sanPhamChiTiet.heDieuHanh}</td>
+                      <td>{this.props.sanPhamChiTiet.heDieuHanh}</td>
                     </tr>
                     <tr>
                       <td>Camera trước</td>
-                      <td>{this.state.sanPhamChiTiet.cameraTruoc}</td>
+                      <td>{this.props.sanPhamChiTiet.cameraTruoc}</td>
                     </tr>
                     <tr>
                       <td>Camera sau</td>
-                      <td>{this.state.sanPhamChiTiet.cameraSau}</td>
+                      <td>{this.props.sanPhamChiTiet.cameraSau}</td>
                     </tr>
                     <tr>
                       <td>RAM</td>
-                      <td>{this.state.sanPhamChiTiet.ram}</td>
+                      <td>{this.props.sanPhamChiTiet.ram}</td>
                     </tr>
                     <tr>
                       <td>ROM</td>
-                      <td>{this.state.sanPhamChiTiet.rom}</td>
+                      <td>{this.props.sanPhamChiTiet.rom}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -226,3 +228,14 @@ export default class BaiTapGioHang extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    //key : value
+    // key sẽ là props của component: value là state được luuw trên store
+    danhSachSanPham : state.gioHangReducer.danhSachSanPham,
+    sanPhamChiTiet: state.gioHangReducer.sanPhamChiTiet,
+  }
+}
+
+export default connect(mapStateToProps)(BaiTapGioHang);
