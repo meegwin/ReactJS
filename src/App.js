@@ -9,13 +9,15 @@ import DemoCourse from "./ListAndKeys/DemoCourse";
 import DemoProps from "./Props/DemoProps";
 // import StateLessComponets from './Components/StateLessComponents';
 // import StateFull, {StateFullComponents} from './Components/StateFullComponents';
-import Home from "./btComponents/Home";
+import Home from "./user-management-html/";
 import BaiTapGioHang from "./BaiTapGioHang/BaiTapGioHang";
 import BaiTapGioHangRedux from "./BaiTapGioHangRedux/BaiTapGioHang";
+import FormValidation from "./form-validation";
+import LifeCycle from "./lifecycle";
 function App() {
   return (
     <div>
-      <BaiTapGioHangRedux />
+      <LifeCycle />
     </div>
   );
 }

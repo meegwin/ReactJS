@@ -18,11 +18,11 @@ const store = createStore(
 
 ReactDOM.render(
   //noi dung in ra html
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <Provider store={store}>
+    <App />
+  </Provider>,
+
   //vi tri in ra html
   document.getElementById("root")
 );

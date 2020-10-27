@@ -29,28 +29,28 @@ export default class BaiTapChonMauXe extends Component {
               <button className="btn" onClick = {() => this.handleChangeColor("./img/car/products/black-car.jpg")}>
                 <img 
                   src="./img/car/icons/icon-black.jpg"
-                  alt="hinh"
+
                   style={{ width: 50 }}
                 />
               </button>
               <button className="btn" onClick = {() => this.handleChangeColor("./img/car/products/red-car.jpg")}>
                 <img
                   src="./img/car/icons/icon-red.jpg"
-                  alt="hinh"
+
                   style={{ width: 50 }}
                 />
               </button>
               <button className="btn" onClick = {() => this.handleChangeColor("./img/car/products/silver-car.jpg")}>
                 <img
                   src="./img/car/icons/icon-silver.jpg"
-                  alt="hinh"
+
                   style={{ width: 50 }}
                 />
               </button>
               <button className="btn" onClick = {() => this.handleChangeColor("./img/car/products/steel-car.jpg")}>
                 <img
                   src="./img/car/icons/icon-steel.jpg"
-                  alt="hinh"
+
                   style={{ width: 50 }}
                 />
               </button>
@@ -59,7 +59,6 @@ export default class BaiTapChonMauXe extends Component {
               <img
                 className="img-thumbnail"
                 src={this.state.imgCar}
-                alt="hinh"
               />
             </div>
           </div>

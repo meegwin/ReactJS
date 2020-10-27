@@ -1,3 +1,5 @@
+import { data } from "jquery";
+import { DELETE_PRODUCT,TANG_GIAM } from "../constants/";
 const initialState = {
   sanPhamChiTiet: {
     maSanPham: "1",
@@ -50,16 +52,66 @@ const initialState = {
     },
   ],
 };
+// spread operator
 const gioHangreducer = (state = initialState, actions) => {
   switch (actions.type) {
-    case "DETAIL_PRODUCT":
-      {
-        state.sanPhamChiTiet = actions.payload;
-        return {...state};
+    case "DETAIL_PRODUCT": {
+      state.sanPhamChiTiet = actions.payload;
+      return { ...state };
+    }
+    case "ADD_PRODUCT": {
+      let danhSachGioHang = [...state.danhSachGioHang];
+      const index = state.danhSachGioHang.findIndex((item) => {
+        return item.maSanPham === actions.payload.maSanPham;
+      });
+      if (index !== -1) {
+        //Tim thay =>Update SL
+        const product = { ...danhSachGioHang[index] };
+        product.soLuong += 1;
+        danhSachGioHang[index] = product;
+      } else {
+        //Add vao gio hang
+        actions.payload.soLuong = 1;
+        danhSachGioHang = [...danhSachGioHang, actions.payload];
       }
+      state.danhSachGioHang = danhSachGioHang;
 
-      break;
+      return { ...state };
+    }
+    case DELETE_PRODUCT: {
+      let danhSachGioHang = [...state.danhSachGioHang];
+      danhSachGioHang = danhSachGioHang.filter((item) => {
+        return item.maSanPham !== actions.payload.maSanPham;
+      });
+      state.danhSachGioHang = danhSachGioHang;
+      return { ...state };
+    }
+    case TANG_GIAM: {
+      let danhSachGioHang = [...state.danhSachGioHang];
+      const index = danhSachGioHang.findIndex((item) => {
+        return item.maSanPham === actions.payload.product.maSanPham;
+      });
+      if (index !== -1) {
+        const product = { ...danhSachGioHang[index] };
 
+        if (actions.payload.status) {
+          //tang
+          product.soLuong++;
+        } else {
+          //giam
+          //neu so luong > 1 thi tru di
+          //con khi so luong < 1 thi kh dc tru di nua
+          if (danhSachGioHang[index].soLuong > 1) {
+            product.soLuong--;
+          } else {
+            alert("kh dc giam");
+          }
+        }
+        danhSachGioHang[index] = product;
+      }
+      state.danhSachGioHang = danhSachGioHang;
+      return { ...state };
+    }
     default:
       break;
   }

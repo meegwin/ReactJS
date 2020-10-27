@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import CartItem from "./CartItem";
-
-export default class Modal extends Component {
-    renderCartList = () => {
-        return this.props.danhSachGioHang.map((cart,index) =>{
-            return <CartItem handleTangGiam={this.props.handleTangGiam} handleDelete={this.props.handleDelete} cart={cart} key={index}/>
-        });
-    };
+import { connect } from "react-redux";
+class Modal extends Component {
+  renderCartList = () => {
+    return this.props.danhSachGioHang.map((cart, index) => {
+      return (
+        <CartItem
+          cart={cart}
+          key={index}
+        />
+      );
+    });
+  };
   render() {
     return (
       <div
@@ -46,9 +51,7 @@ export default class Modal extends Component {
                     <th>thành tiền</th>
                   </tr>
                 </thead>
-                <tbody>
-                  {this.renderCartList()}
-                </tbody>
+                <tbody>{this.renderCartList()}</tbody>
                 <tbody />
               </table>
             </div>
@@ -70,3 +73,10 @@ export default class Modal extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    danhSachGioHang: state.gioHangReducer.danhSachGioHang,
+  };
+};
+
+export default connect(mapStateToProps, null)(Modal);
